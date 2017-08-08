@@ -1,0 +1,29 @@
+<html>
+<head>
+
+
+</head>
+
+
+<body>
+
+<form name="updateSheet" method="post" action="/updateSheetPost">
+<input type="hidden" value=<%=fileName%> id="fileName" name="fileName"></input>
+<input type="hidden" value=<%=sheetName%> id="sheetName" name="sheetName"></input>
+<%var colName=colName%>
+<table>
+<%colName.forEach(function(vals){%>
+<tr>
+<%var col=vals['header']%>
+<td><%=col%></td> <td> <input type="text" id=<%=col%> name=<%=col%>></input></td>
+</br>
+
+</tr>
+<%})%>
+</table>
+<input type="submit" name="event" value="updateSheet"/>
+</form>
+</body>
+
+
+</html>

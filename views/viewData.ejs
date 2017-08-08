@@ -1,0 +1,62 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+<script>
+$(document).ready(function(){
+    $("#updateSheet1").click(function(){
+      console.log("hello");
+        alert("Hello");
+    });
+   });
+
+</script>
+<script>
+function readData(){
+ var sheetName=$("#sheetName").val();
+ var fileName=$("#fileName").val();
+ 
+ $.ajax({
+  url: "/getData",
+  type: "get", //send it through get method
+  data: { 
+    sheetName: sheetName, 
+    fileName: fileName
+  },
+  success: function(data) {
+    //Do Something
+     $("#excel").html(data);
+    
+  },
+  error: function(xhr) {
+  console.log("error");
+    //Do Something to handle error
+  }
+});
+
+}
+
+</script>
+
+<img src="images/abn.jpeg"></img>
+
+</head>
+<body>
+   <h1><%= title %></h1>
+    <p>Welcome to <%= title %> &nbsp;<a href="/">Home Page</a></p>
+    </br>
+   FileName <input type="text" name="fileName" id="fileName"></input>
+  </br>
+   Sheet Name <input type="text" name="sheet" id="sheetName"></input>
+   </br>
+   <button id="getData" name="getData" onclick="readData()">Get Data</button>
+  
+   
+   </br>
+    </br>
+    
+   <div id="excel">
+   
+   
+   </div>
+</body>
+</html>

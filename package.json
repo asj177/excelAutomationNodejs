@@ -1,0 +1,13 @@
+{
+  "name": "Excel",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "*",
+    "exceljs": "^0.5.1",
+    "express": "3.2.6"
+  }
+}

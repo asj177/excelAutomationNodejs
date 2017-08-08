@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <div id="header">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <img src="images/abn.jpeg"></img>
+  </div>  
+  
+  <script type="text/javascript">
+  
+  function auto_grow(element) {
+    element.style.height = "5px";
+    element.style.height = (element.scrollHeight)+"px";
+}
+
+function submitData(){
+$.ajax({
+			         type:'GET',
+			         url:'/filecreate',
+			         success:function(data){
+			       		 $("#primary").html(data);
+			         }
+	         	});	
+
+}
+  </script>
+  </head>
+  <body>
+  
+   <body>
+   
+   <form name="excel" method="post" action="/filecreate">
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %> &nbsp;<a href="/">Home Page</a> </p>
+    </br>
+    
+    <table>
+    <tr>
+    <td>
+   Complete Name of File along with Path </td><td><input type="text" name="fileName" id="fileName"></input></td>
+   </tr>
+   <tr>
+   <td>Sheet Name </td><td><input type="text" name="sheet" id="sheetName"></input></td>
+   </br>
+   </br>
+    </tr>
+    <tr>
+    <td>
+   <div id="excel">
+   Add configuration for the file in format ColumnName-Type </br>(For eg: CustomerId-text,Gender-radio) 
+   </br>
+   </td>
+   <td>
+   <textarea id="config" name="config" onkeyup="auto_grow(this)"></textarea>
+   </td>
+   </tr>
+   </table>
+   </br>
+   </br>
+    <input type="submit" name="event" value="CreateNewFile"/>
+   
+   </div>
+   </form>
+  </body>
+</html>
